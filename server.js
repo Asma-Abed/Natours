@@ -24,6 +24,15 @@ mongoose
 // console.log(process.env);
 
 const port = process.env.PORT || 3000;
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`app running on port ${port}...`);
+});
+
+process.on('unhandledRejection', (err) => {
+  console.log(err.name);
+  console.log(err.message);
+  console.log('Unhandled Rejection! Shutting down');
+  server.close(() => {
+    process.exit(1);
+  });
 });
