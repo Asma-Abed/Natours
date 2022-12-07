@@ -21742,7 +21742,31 @@ exports.isCancel = isCancel;
 exports.CanceledError = CanceledError;
 exports.AxiosError = AxiosError;
 exports.Axios = Axios;
-},{"./lib/axios.js":"../../node_modules/axios/lib/axios.js"}],"login.js":[function(require,module,exports) {
+},{"./lib/axios.js":"../../node_modules/axios/lib/axios.js"}],"alerts.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.showAlert = exports.hideAlert = void 0;
+
+/*eslint-disable*/
+var hideAlert = function hideAlert() {
+  var el = document.querySelector('.alert');
+  if (el) el.parentElement.removeChild(el);
+}; // type is success or error
+
+
+exports.hideAlert = hideAlert;
+
+var showAlert = function showAlert(type, msg) {
+  var markup = "<div class=\"alert alert--".concat(type, "\">").concat(msg, "</div>");
+  document.querySelector('body').insertAdjacentHTML('afterbegin', markup);
+  window.setTimeout(hideAlert, 5000);
+};
+
+exports.showAlert = showAlert;
+},{}],"login.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -21751,6 +21775,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.login = void 0;
 
 var _axios = _interopRequireDefault(require("axios"));
+
+var _alerts = require("./alerts");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -21789,7 +21815,7 @@ function () {
             res = _context.sent;
 
             if (res.data.status === 'success') {
-              alert('Logged in successfully!');
+              (0, _alerts.showAlert)('success', 'Logged in successfully!');
               window.setTimeout(function () {
                 location.assign('/');
               }, 1500);
@@ -21801,7 +21827,7 @@ function () {
           case 8:
             _context.prev = 8;
             _context.t0 = _context["catch"](1);
-            alert(_context.t0.response.data.message);
+            (0, _alerts.showAlert)('error', _context.t0.response.data.message);
 
           case 11:
           case "end":
@@ -21817,7 +21843,7 @@ function () {
 }();
 
 exports.login = login;
-},{"axios":"../../node_modules/axios/index.js"}],"index.js":[function(require,module,exports) {
+},{"axios":"../../node_modules/axios/index.js","./alerts":"alerts.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 require("core-js/stable");
@@ -21863,7 +21889,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63681" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62483" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
