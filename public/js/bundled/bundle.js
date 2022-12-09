@@ -21899,7 +21899,7 @@ var _login = require("./login");
 
 /*eslint-disable*/
 // import '@babel/polyfill';
-var loginForm = document.querySelector('.form');
+var loginForm = document.querySelector('.form--login');
 var logoutBtn = document.querySelector('.nav__el--logout');
 if (loginForm) loginForm.addEventListener('submit', function (e) {
   e.preventDefault();
@@ -21936,7 +21936,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61941" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63826" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
