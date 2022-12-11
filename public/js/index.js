@@ -1,6 +1,6 @@
 /*eslint-disable*/
-import 'core-js/stable';
-import 'regenerator-runtime/runtime';
+// import 'core-js/stable';
+// import 'regenerator-runtime/runtime';
 // import '@babel/polyfill';
 import { login, logout } from './login';
 import { updateSettings } from './updateSettings';
