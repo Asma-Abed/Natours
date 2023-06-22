@@ -25,7 +25,6 @@ const createSendToken = (user, statusCode, req, res) => {
 
   // remove password from output
   user.password = undefined;
-
   res.status(statusCode).json({
     status: 'success',
     token,
@@ -66,7 +65,7 @@ exports.login = catchAsync(async (req, res, next) => {
   }
 
   // 3 if everything ok, send token to client
-  createSendToken(user, req, 200, res);
+  createSendToken(user, 200, req, res);
 });
 
 exports.logout = (req, res) => {
